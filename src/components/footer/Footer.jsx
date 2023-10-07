@@ -3,8 +3,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer>
-      <p>this is footer</p>
+    <footer className="text-center py-5 bg-slate-100 rounded">
+      <p>@2023, All Copyright Reserved by Meraj Faizan</p>
     </footer>
   );
 };
