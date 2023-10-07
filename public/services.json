@@ -1,0 +1,104 @@
+[
+  {
+    "name": "Full-Service Production",
+    "image": "https://i.ibb.co/ykzcFWk/event-service-1.jpg",
+    "price": "$2,500 - $5,000",
+    "description": "Our Full-Service Production package offers a comprehensive solution to bring your event vision to life. With years of experience and a dedicated team, we ensure every detail is meticulously planned and executed, creating a memorable event for you and your guests.",
+    "keyServices": [
+      "Event planning and coordination",
+      "Venue selection and setup",
+      "Theme and decor design",
+      "Catering and menu customization",
+      "Entertainment and guest engagement",
+      "Audiovisual production",
+      "Logistics and transportation",
+      "On-site event management",
+      "Post-event evaluation and feedback"
+    ]
+  },
+  {
+    "name": "Event Management",
+    "image": "https://i.ibb.co/z5XzMvC/event-service-3.jpg",
+    "price": "$2,500 - $5,000",
+    "description": "Our Event Management package offers a comprehensive solution to bring your event vision to life. With years of experience and a dedicated team, we ensure every detail is meticulously planned and executed, creating a memorable event for you and your guests.",
+    "keyServices": [
+      "Event planning and coordination",
+      "Venue selection and setup",
+      "Theme and decor design",
+      "Catering and menu customization",
+      "Entertainment and guest engagement",
+      "Audiovisual production",
+      "Logistics and transportation",
+      "On-site event management",
+      "Post-event evaluation and feedback"
+    ]
+  },
+  {
+    "name": "Food and Beverages",
+    "image": "https://i.ibb.co/KsBdQjV/event-service-5.jpg",
+    "price": "$2,500 - $5,000",
+    "description": "Our Food and Beverages package offers a comprehensive solution to bring your event vision to life. With years of experience and a dedicated team, we ensure every detail is meticulously planned and executed, creating a memorable event for you and your guests.",
+    "keyServices": [
+      "Event planning and coordination",
+      "Venue selection and setup",
+      "Theme and decor design",
+      "Catering and menu customization",
+      "Entertainment and guest engagement",
+      "Audiovisual production",
+      "Logistics and transportation",
+      "On-site event management",
+      "Post-event evaluation and feedback"
+    ]
+  },
+  {
+    "name": "Live Entertainment",
+    "image": "https://i.ibb.co/p0ZYhs3/event-service-2.jpg",
+    "price": "$2,500 - $5,000",
+    "description": "Our Live Entertainment package offers a comprehensive solution to bring your event vision to life. With years of experience and a dedicated team, we ensure every detail is meticulously planned and executed, creating a memorable event for you and your guests.",
+    "keyServices": [
+      "Event planning and coordination",
+      "Venue selection and setup",
+      "Theme and decor design",
+      "Catering and menu customization",
+      "Entertainment and guest engagement",
+      "Audiovisual production",
+      "Logistics and transportation",
+      "On-site event management",
+      "Post-event evaluation and feedback"
+    ]
+  },
+  {
+    "name": "Destination Management",
+    "image": "https://i.ibb.co/25vYddB/event-service-4.jpg",
+    "price": "$2,500 - $5,000",
+    "description": "Our Destination Management package offers a comprehensive solution to bring your event vision to life. With years of experience and a dedicated team, we ensure every detail is meticulously planned and executed, creating a memorable event for you and your guests.",
+    "keyServices": [
+      "Event planning and coordination",
+      "Venue selection and setup",
+      "Theme and decor design",
+      "Catering and menu customization",
+      "Entertainment and guest engagement",
+      "Audiovisual production",
+      "Logistics and transportation",
+      "On-site event management",
+      "Post-event evaluation and feedback"
+    ]
+  },
+  {
+    "name": "Company Picnic",
+    "image": "https://i.ibb.co/0jbPP3Y/event-service-6.jpg",
+    "price": "$2,500 - $5,000",
+    "description": "Our Company Picnic package offers a comprehensive solution to bring your event vision to life. With years of experience and a dedicated team, we ensure every detail is meticulously planned and executed, creating a memorable event for you and your guests.",
+    "keyServices": [
+      "Event planning and coordination",
+      "Venue selection and setup",
+      "Theme and decor design",
+      "Catering and menu customization",
+      "Entertainment and guest engagement",
+      "Audiovisual production",
+      "Logistics and transportation",
+      "On-site event management",
+      "Post-event evaluation and feedback"
+    ]
+  }
+]

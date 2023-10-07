@@ -1,12 +1,11 @@
 import "./App.css";
+import Layout from "./layout/layout";
 
 function App() {
   return (
-    <div>
-      <h1 className="text-center text-5xl capitalize">
-        event management website setup
-      </h1>
-    </div>
+    <>
+      <Layout />
+    </>
   );
 }
 
