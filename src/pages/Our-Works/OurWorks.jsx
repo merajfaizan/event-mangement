@@ -28,20 +28,20 @@ const OurWorks = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div data-aos="flip-left">
+        <div>
           <img className="mb-2 w-full" src={event1} alt="event-image" />
           <p className="text-2xl p-2 font-medium border-l border-primary-color">
             Hexatron Factory Open Day
           </p>
         </div>
-        <div data-aos="flip-right">
+        <div>
           <img className="mb-2 w-full" src={event2} alt="event-image" />
           <p className="text-2xl p-2 font-medium border-l border-primary-color">
             Eroforce Global Product Launch
           </p>
         </div>
         {pathname == "/our-works" && (
-          <div data-aos="flip-right">
+          <div>
             <img className="mb-2 w-full" src={event4} alt="event-image" />
             <p className="text-2xl p-2 font-medium border-l border-primary-color">
               APA Classic Company Picnic
@@ -49,7 +49,7 @@ const OurWorks = () => {
           </div>
         )}
         {pathname == "/our-works" && (
-          <div data-aos="flip-left">
+          <div>
             <img className="mb-2 w-full" src={event3} alt="event-image" />
             <p className="text-2xl p-2 font-medium border-l border-primary-color">
               Hexatron Factory Open Day
