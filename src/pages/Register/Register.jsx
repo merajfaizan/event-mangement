@@ -1,8 +1,12 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider } from "firebase/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import swal from "sweetalert";
 
 const Register = () => {
   const { googleLoginProvider, HandleCreateUser } = useContext(AuthContext);
@@ -14,24 +18,38 @@ const Register = () => {
   const handleGoogleLogin = () => {
     googleLoginProvider(googleProvider)
       .then((result) => {
-        navigate("/");
-        alert("successfully user Logged in");
+        swal("Good job!", "Successfully Registered", "success");
+        navigate("/")
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        const errorMessage = error.message.split(":");
+        toast.error(errorMessage[1]);
+      });
   };
 
   //  register with email and password
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const capitalLetterPattern = /.*[A-Z].*/;
+    const specialCharPattern = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
 
-      HandleCreateUser(email, password).then((result) => {
-        alert("successfully user registered");
-      });
-    form.reset();
-    navigate("/");
+    if (!capitalLetterPattern.test(password)) {
+      return toast.warning("Add at-least a capital letter");
+    } else if (!specialCharPattern.test(password)) {
+      return toast.warning("Add at-least a special character");
+    }
+
+    try {
+      await HandleCreateUser(email, password);
+      swal("Good job!", "Successfully Registered", "success");
+      navigate("/")
+    } catch (error) {
+      const errorMessage = error.message.split(":");
+      toast.error(errorMessage[1]);
+    }
   };
 
   return (
@@ -111,6 +129,18 @@ const Register = () => {
           alt=""
         />
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

@@ -3,6 +3,9 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider } from "firebase/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import swal from "sweetalert";
 
 const Login = () => {
   const { googleLoginProvider, handleLogin } = useContext(AuthContext);
@@ -16,11 +19,13 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLoginProvider(googleProvider)
       .then((result) => {
-        navigate("/");
-        alert("successfully user Logged in");
+        swal("Good job!", "Successfully Logged In", "success");
         navigate(from, { replace: true });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        const errorMessage = error.message.split(":");
+        toast.error(errorMessage[1]);
+      });
   };
 
   //  login with email and password
@@ -32,12 +37,13 @@ const Login = () => {
 
     handleLogin(email, password)
       .then((result) => {
+        swal("Good job!", "Successfully Logged In", "success");
         form.reset();
-        alert("successfully user Logged in");
         navigate(from, { replace: true });
       })
-      .catch((e) => {
-        console.error(e);
+      .catch((error) => {
+        const errorMessage = error.message.split(":");
+        toast.error(errorMessage[1]);
       });
   };
 
@@ -118,6 +124,18 @@ const Login = () => {
           </Link>
         </form>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

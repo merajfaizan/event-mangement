@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const Service = ({ service }) => {
   return (
-    <div>
+    <div data-aos="flip-right">
       <img
         className="mb-2 w-full rounded"
         src={service?.image}
