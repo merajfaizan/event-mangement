@@ -1,15 +1,44 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  //  register with email and password
+  const { googleLoginProvider, handleLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  //  google User Create
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleLogin = () => {
+    googleLoginProvider(googleProvider)
+      .then((result) => {
+        navigate("/");
+        alert("successfully user Logged in");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error));
+  };
+
+  //  login with email and password
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log( email, password);
+    handleLogin(email, password)
+      .then((result) => {
+        form.reset();
+        alert("successfully user Logged in");
+        navigate(from, { replace: true });
+      })
+      .catch((e) => {
+        console.error(e);
+      });
   };
 
   return (
@@ -25,6 +54,7 @@ const Login = () => {
           className="p-5 mx-auto shadow-xl rounded-lg border mt-20"
         >
           <button
+            onClick={handleGoogleLogin}
             type="button"
             className="text-primary-color w-full hover:text-white bg-white hover:bg-primary-color border border-primary-color hover:bg-secondColor/70  font-semibold rounded-lg text-md px-5 py-2.5 text-center inline-flex items-center mr-2 mb-2"
           >
@@ -82,6 +112,10 @@ const Login = () => {
           >
             Submit
           </button>
+          <Link className="mt-5 inline-block" to={"/register"}>
+            Don&apos;t have an account?{" "}
+            <span className="underline">click here to Register</span>
+          </Link>
         </form>
       </div>
     </div>

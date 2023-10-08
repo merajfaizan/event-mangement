@@ -1,16 +1,37 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
+  const { googleLoginProvider, HandleCreateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  //  google User Create
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleLogin = () => {
+    googleLoginProvider(googleProvider)
+      .then((result) => {
+        navigate("/");
+        alert("successfully user Logged in");
+      })
+      .catch((error) => console.log(error));
+  };
+
   //  register with email and password
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(name, email, password);
+      HandleCreateUser(email, password).then((result) => {
+        alert("successfully user registered");
+      });
+    form.reset();
+    navigate("/");
   };
 
   return (
@@ -21,6 +42,7 @@ const Register = () => {
           className="p-5 mx-auto shadow-xl rounded-lg border mt-20"
         >
           <button
+            onClick={handleGoogleLogin}
             type="button"
             className="text-primary-color w-full hover:text-white bg-white hover:bg-primary-color border border-primary-color hover:bg-secondColor/70  font-semibold rounded-lg text-md px-5 py-2.5 text-center inline-flex items-center mr-2 mb-2"
           >
@@ -41,22 +63,6 @@ const Register = () => {
             </svg>
             Sign in with Google
           </button>
-          <div className="mb-6">
-            <label
-              htmlFor="name"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Your Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-firstColor focus:border-secondColor block w-full p-2.5"
-              placeholder="John doe"
-              required
-            />
-          </div>
           <div className="mb-6">
             <label
               htmlFor="email"
@@ -94,6 +100,10 @@ const Register = () => {
           >
             Submit
           </button>
+          <Link className="mt-5 inline-block" to={"/login"}>
+            Already have an account?
+            <span className="underline">click here to Login</span>
+          </Link>
         </form>
         <img
           className="hidden md:block w-full h-full object-cover"

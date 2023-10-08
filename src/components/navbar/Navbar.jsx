@@ -1,13 +1,20 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import userImage from "../../assets/man-client-1.jpg";
 import { BiMenu } from "react-icons/bi";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
   const { pathname } = useLocation();
   const [open, isOpen] = useState(false);
-  const user = false;
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   return (
     <header>
       <nav className="flex justify-between items-center py-5 text-lg font-medium text-gray">
@@ -62,14 +69,20 @@ const Navbar = () => {
             </Link>
             {user ? (
               <>
-                <img
-                  className="w-14 h-14 rounded-full"
-                  src={userImage}
-                  alt="user-image"
-                />
-                <Link className="text-white bg-black px-5 py-2 font-medium rounded-md">
+                <Link
+                  onClick={handleLogout}
+                  className="text-white bg-black px-5 py-2 font-medium rounded-md"
+                >
                   <button>Log Out</button>
                 </Link>
+                <div className="flex flex-col justify-center items-center">
+                  <img
+                    className="w-14 h-14 rounded-full"
+                    src={`${user?.photoURL}` || userImage}
+                    alt="user-image"
+                  />
+                  <span>{user?.displayName}</span>
+                </div>
               </>
             ) : (
               <>
@@ -140,12 +153,18 @@ const Navbar = () => {
           </Link>
           {user ? (
             <>
-              <img
-                className="w-14 h-14 rounded-full"
-                src={userImage}
-                alt="user-image"
-              />
-              <Link className="text-white bg-black px-5 py-2 font-medium rounded-md">
+              <div className="flex flex-col justify-center items-center">
+                <img
+                  className="w-14 h-14 rounded-full"
+                  src={`${user?.photoURL}` || userImage}
+                  alt="user-image"
+                />
+                <span>{user?.displayName}</span>
+              </div>
+              <Link
+                onClick={handleLogout}
+                className="text-white bg-black px-5 py-2 font-medium rounded-md"
+              >
                 <button>Log Out</button>
               </Link>
             </>
