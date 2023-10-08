@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import AboutUs from "../About-us/AboutUs";
+import OurWorks from "../Our-Works/OurWorks";
+import Services from "../services/Services";
 
 const Home = () => {
   return (
@@ -31,6 +33,12 @@ const Home = () => {
       </div>
       <div className="mt-10">
         <AboutUs />
+      </div>
+      <div className="mt-10">
+        <OurWorks />
+      </div>
+      <div className="mt-10 mb-5">
+        <Services />
       </div>
     </section>
   );

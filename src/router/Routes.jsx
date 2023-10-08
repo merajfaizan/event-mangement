@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import App from "../App";
-import Services from "../pages/services/services";
+import Services from "../pages/services/Services";
 import OurWorks from "../pages/Our-Works/OurWorks";
 import AboutUs from "../pages/About-us/AboutUs";
 import Login from "../pages/Login/Login";
@@ -25,7 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/about-us",
-        element: <AboutUs />,
+        element: (
+          <PrivateRoute>
+            <AboutUs />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/services",
@@ -41,7 +45,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/our-works",
-        element: <OurWorks />,
+        element: (
+          <PrivateRoute>
+            <OurWorks />
+          </PrivateRoute>
+        ),
       },
     ],
   },

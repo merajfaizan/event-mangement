@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Full-Service Production",
     "image": "https://i.ibb.co/ykzcFWk/event-service-1.jpg",
     "price": "$2,500 - $5,000",
@@ -17,6 +18,7 @@
     ]
   },
   {
+    "id": 2,
     "name": "Event Management",
     "image": "https://i.ibb.co/z5XzMvC/event-service-3.jpg",
     "price": "$2,500 - $5,000",
@@ -34,6 +36,7 @@
     ]
   },
   {
+    "id": 3,
     "name": "Food and Beverages",
     "image": "https://i.ibb.co/KsBdQjV/event-service-5.jpg",
     "price": "$2,500 - $5,000",
@@ -51,6 +54,7 @@
     ]
   },
   {
+    "id": 4,
     "name": "Live Entertainment",
     "image": "https://i.ibb.co/p0ZYhs3/event-service-2.jpg",
     "price": "$2,500 - $5,000",
@@ -68,6 +72,7 @@
     ]
   },
   {
+    "id": 5,
     "name": "Destination Management",
     "image": "https://i.ibb.co/25vYddB/event-service-4.jpg",
     "price": "$2,500 - $5,000",
@@ -85,6 +90,7 @@
     ]
   },
   {
+    "id": 6,
     "name": "Company Picnic",
     "image": "https://i.ibb.co/0jbPP3Y/event-service-6.jpg",
     "price": "$2,500 - $5,000",

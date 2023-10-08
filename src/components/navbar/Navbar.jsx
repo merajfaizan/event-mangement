@@ -7,7 +7,7 @@ import { BiMenu } from "react-icons/bi";
 const Navbar = () => {
   const { pathname } = useLocation();
   const [open, isOpen] = useState(false);
-  const user = true;
+  const user = false;
   return (
     <header>
       <nav className="flex justify-between items-center py-5 text-lg font-medium text-gray">
@@ -72,9 +72,20 @@ const Navbar = () => {
                 </Link>
               </>
             ) : (
-              <Link className="text-white bg-black px-5 py-2 font-medium rounded-md">
-                <button>Register</button>
-              </Link>
+              <>
+                <Link
+                  to={"/register"}
+                  className="text-white bg-black px-5 py-2 font-medium rounded-md"
+                >
+                  <button>Register</button>
+                </Link>
+                <Link
+                  to={"/login"}
+                  className="text-white bg-black px-5 py-2 font-medium rounded-md"
+                >
+                  <button>Login</button>
+                </Link>
+              </>
             )}
           </ul>
           <BiMenu
@@ -139,9 +150,20 @@ const Navbar = () => {
               </Link>
             </>
           ) : (
-            <Link className="text-white bg-black px-5 py-2 font-medium rounded-md">
-              <button>Register</button>
-            </Link>
+            <>
+              <Link
+                to={"/register"}
+                className="text-white bg-black px-5 py-2 font-medium rounded-md"
+              >
+                <button>Register</button>
+              </Link>
+              <Link
+                to={"/login"}
+                className="text-white bg-black px-5 py-2 font-medium rounded-md"
+              >
+                <button>Login</button>
+              </Link>
+            </>
           )}
         </ul>
       </nav>

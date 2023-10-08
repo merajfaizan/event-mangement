@@ -41,7 +41,7 @@ const AboutUs = () => {
           Our Valuable Clients
         </h1>
         <div
-          className={`flex flex-col md:flex md:flex-row justify-center items-center w-full h-36 gap-5`}
+          className={`flex flex-col md:flex md:flex-row justify-center items-center w-full md:h-36 gap-5`}
         >
           <img
             className="flex-1 w-full h-full object-contain block"
