@@ -2,14 +2,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import swal from "sweetalert";
 
 const Register = () => {
-  const { googleLoginProvider, HandleCreateUser } = useContext(AuthContext);
+  const { googleLoginProvider, HandleCreateUser, updateUserProfile } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   //  google User Create
@@ -19,7 +20,7 @@ const Register = () => {
     googleLoginProvider(googleProvider)
       .then((result) => {
         swal("Good job!", "Successfully Registered", "success");
-        navigate("/")
+        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message.split(":");
@@ -31,6 +32,8 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
+    const image = form.image.value;
     const email = form.email.value;
     const password = form.password.value;
     const capitalLetterPattern = /.*[A-Z].*/;
@@ -42,14 +45,28 @@ const Register = () => {
       return toast.warning("Add at-least a special character");
     }
 
-    try {
-      await HandleCreateUser(email, password);
-      swal("Good job!", "Successfully Registered", "success");
-      navigate("/")
-    } catch (error) {
-      const errorMessage = error.message.split(":");
-      toast.error(errorMessage[1]);
-    }
+    HandleCreateUser(email, password)
+      .then((result) => {
+        result.user.displayName = name;
+        result.user.photoURL = image;
+        handleUpdateUserProfile(name, image);
+        swal("Good job!", "Successfully Registered", "success");
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorMessage = error.message.split(":");
+        toast.error(errorMessage[1]);
+      });
+  };
+
+  const handleUpdateUserProfile = (name, photoUrl) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoUrl,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -81,6 +98,38 @@ const Register = () => {
             </svg>
             Sign in with Google
           </button>
+          <div className="mb-6">
+            <label
+              htmlFor="name"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Your Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-firstColor focus:border-secondColor block w-full p-2.5"
+              placeholder="John doe"
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              htmlFor="image"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Photo Url
+            </label>
+            <input
+              type="text"
+              id="image"
+              name="image"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-firstColor focus:border-secondColor block w-full p-2.5"
+              placeholder="https://www.demoImage.com"
+              required
+            />
+          </div>
           <div className="mb-6">
             <label
               htmlFor="email"

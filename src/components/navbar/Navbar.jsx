@@ -110,7 +110,7 @@ const Navbar = () => {
         <ul
           className={`${
             !open && "hidden"
-          } absolute top-16 right-7 bg-slate-100 md:hidden flex flex-col gap-5 pr-10 pl-5 py-5 rounded`}
+          } absolute z-50 top-16 right-7 bg-slate-100 md:hidden flex flex-col gap-5 pr-10 pl-5 py-5 rounded`}
         >
           <Link to={"/"}>
             <li
